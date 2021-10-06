@@ -104,14 +104,17 @@ function calcularModa(numeros) {
  * Funcion que calcula la mediana de un array de numeros
  * @param {*} numeros array de numeros
  * @returns la mediana de los numeros del array
+ * 
+ * Para el array de longitud par, la mediana es la media de los dos valores centrales.
+ * Para el array de longitud impar, la mediana es el valor que ocupa la posición central.
  */
 function calcularMediana(numeros) {
-  const sortedNumeros = [...numeros].sort();
-  if (sortedNumeros.length % 2 == 0) {
-    const mitad = sortedNumeros.length / 2;
-    return (sortedNumeros[mitad - 1] + sortedNumeros[mitad]) / 2;
+  const sortedNumeros = [...numeros].sort(); //Almacenamos el array ordenado en una constante (sortedNumeros)
+  if (sortedNumeros.length % 2 == 0) {//Calculamos la mediana para un array de longitud par
+    const mitad = sortedNumeros.length / 2;//Obtenemos la posición de la mitad del array
+    return (sortedNumeros[mitad - 1] + sortedNumeros[mitad]) / 2;//Media de los valores en la posición central y anterior
   }
-  return sortedNumeros[(sortedNumeros.length - 1) / 2];
+  return sortedNumeros[(sortedNumeros.length - 1) / 2];//Calculamos la mediana para un array de longitud impar
 }
 
 /*--------------------------------------------------------*/
