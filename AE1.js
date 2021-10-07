@@ -38,42 +38,34 @@ function validarArray(arr) {
  * @returns la media de los numeros del array
  */
 function calcularMedia(numeros) {
-  const sum = numeros.reduce((total, num) => {
+  const suma = numeros.reduce((total, num) => {
     return total + num;
   });
-  return sum / numeros.length;
+  return suma / numeros.length;
 }
 
-/** *******JANA*******
- * Funcion que calcula la moda de un array de numeros.
- * Si hay mas de una opcion para la moda, devuelve la opcion
- * cuya ultima ocurrencia aparece antes en el array
- * @param {*} numeros array de numeros
- * @returns la moda de los numeros del array
- */
-
-/** *******PILAR*******
+/**
  * Devuelve la moda de un array de numeros.
  * La moda es el valor del array que más veces se repite.
- *  
+ *
  * Si hay mas de una opcion para la moda, devuelve la opcion
  * cuya ultima ocurrencia aparece antes en el array.
  * Por ejemplo, dado un array formado por [0, 2, 1, 2, 1, 1, 2],
  * el valor devuelto es 1 porque es el primer valor que alcanza la máxima ocurrencia.
- * 
+ *
  * Esta funcion siempre devuelve un valor, que por defecto,
  * es el primer elemento del array y el valor 1.
- * 
+ *
  * @param numeros array de numeros validados
- *  
+ *
  * @return moda de los numeros del array
  */
 function calcularModa(numeros) {
   /**
    * Objeto que mapea los numeros que componen el array y su frecuencia de repetición
-   * 
+   *
    * @param num clave del mapa. Es un valor único, no se puede repetir
-   * 
+   *
    * @param repeticiones número de veces que un num se repite en el array
    */
   const repeticiones = new Map();
@@ -83,14 +75,13 @@ function calcularModa(numeros) {
 
   //El método forEach ejecuta la funcion una vez por cada elemento del array
   numeros.forEach((num) => {
-
     //El método has() devuelve un boolean indicando si un elemento con dicha clave existe o no.
     //Con ello conseguimos que la clave sea única.
     //Si ya existe una clave con el valor del elemento del array, el valor de repeticiones para esa clave aumenta en 1.
     if (repeticiones.has(num)) {
       const aux = repeticiones.get(num); //Utilizamos una variable auxiliar para almacenar la frecuencia del valor del array (clave).
       repeticiones.set(num, aux + 1); //Asignamos como par de valores: el valor del array, y un incremento de 1 en su frecuencia.
-      
+
       //Si la frecuencia de esta clave es mayor que la anterior, el valor de la variable maxCount (moda) cambia por este par.
       if (aux + 1 > maxCount[1]) maxCount = [num, aux + 1];
     } else {
@@ -104,17 +95,18 @@ function calcularModa(numeros) {
  * Funcion que calcula la mediana de un array de numeros
  * @param {*} numeros array de numeros
  * @returns la mediana de los numeros del array
- * 
+ *
  * Para el array de longitud par, la mediana es la media de los dos valores centrales.
  * Para el array de longitud impar, la mediana es el valor que ocupa la posición central.
  */
 function calcularMediana(numeros) {
   const sortedNumeros = [...numeros].sort(); //Almacenamos el array ordenado en una constante (sortedNumeros)
-  if (sortedNumeros.length % 2 == 0) {//Calculamos la mediana para un array de longitud par
-    const mitad = sortedNumeros.length / 2;//Obtenemos la posición de la mitad del array
-    return (sortedNumeros[mitad - 1] + sortedNumeros[mitad]) / 2;//Media de los valores en la posición central y anterior
+  if (sortedNumeros.length % 2 == 0) {
+    //Calculamos la mediana para un array de longitud par
+    const mitad = sortedNumeros.length / 2; //Obtenemos la posición de la mitad del array
+    return (sortedNumeros[mitad - 1] + sortedNumeros[mitad]) / 2; //Media de los valores en la posición central y anterior
   }
-  return sortedNumeros[(sortedNumeros.length - 1) / 2];//Calculamos la mediana para un array de longitud impar
+  return sortedNumeros[(sortedNumeros.length - 1) / 2]; //Calculamos la mediana para un array de longitud impar
 }
 
 /*--------------------------------------------------------*/
