@@ -61,28 +61,16 @@ function calcularMedia(numeros) {
  * @return moda de los numeros del array
  */
 function calcularModa(numeros) {
-  /**
-   * Objeto que mapea los numeros que componen el array y su frecuencia de repetición
-   *
-   * @param num clave del mapa. Es un valor único, no se puede repetir
-   *
-   * @param repeticiones número de veces que un num se repite en el array
-   */
-  const repeticiones = new Map();
-  //Inicializamos la variable que representa la frecuencia máxima con
-  //el par: valor del primer indice del array y frecuencia 1
+
+  const repeticiones = new Map(); //Objeto que mapea los numeros que componen el array y su frecuencia de repetición
+
   let maxCount = [numeros[0], 1];
 
-  //El método forEach ejecuta la funcion una vez por cada elemento del array
   numeros.forEach((num) => {
-    //El método has() devuelve un boolean indicando si un elemento con dicha clave existe o no.
-    //Con ello conseguimos que la clave sea única.
-    //Si ya existe una clave con el valor del elemento del array, el valor de repeticiones para esa clave aumenta en 1.
+    
     if (repeticiones.has(num)) {
-      const aux = repeticiones.get(num); //Utilizamos una variable auxiliar para almacenar la frecuencia del valor del array (clave).
-      repeticiones.set(num, aux + 1); //Asignamos como par de valores: el valor del array, y un incremento de 1 en su frecuencia.
-
-      //Si la frecuencia de esta clave es mayor que la anterior, el valor de la variable maxCount (moda) cambia por este par.
+      const aux = repeticiones.get(num); 
+      repeticiones.set(num, aux + 1);
       if (aux + 1 > maxCount[1]) maxCount = [num, aux + 1];
     } else {
       repeticiones.set(num, 1);
